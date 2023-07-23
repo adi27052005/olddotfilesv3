@@ -115,11 +115,11 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 
 	{ MODKEY|ShiftMask,		XK_w,	   spawn,	   SHCMD("firefox") },
-	{ 0,				XF86XK_AudioLowerVolume, spawn, SHCMD("pactl set-sink-volume 0 -5%") },
-	{ 0,				XF86XK_AudioRaiseVolume, spawn, SHCMD("pactl set-sink-volume 0 +5%") },
-	{ 0,				XF86XK_AudioMute,	spawn, SHCMD("pactl set-sink-mute 0") },
-	{ 0,				XF86XK_MonBrightnessUp, spawn, SHCMD("sudo ybacklight -inc 5%") },
-	{ 0,				XF86XK_MonBrightnessDown, spawn, SHCMD("sudo ybacklight -dec 5%") },
+	{ 0,				XF86XK_AudioLowerVolume, spawn, SHCMD("pactl set-sink-volume 0 -5% && kill $(ps -ef | grep sleep -m1 | awk '{print $2}')") },
+	{ 0,				XF86XK_AudioRaiseVolume, spawn, SHCMD("pactl set-sink-volume 0 +5% && kill $(ps -ef | grep sleep -m1 | awk '{print $2}')") },
+	{ 0,				XF86XK_AudioMute,	spawn, SHCMD("pactl set-sink-mute 0 toggle && kill $(ps -ef | grep sleep -m1 | awk '{print $2}')") },
+	{ 0,				XF86XK_MonBrightnessUp, spawn, SHCMD("sudo ybacklight -inc 5% && kill $(ps -ef | grep sleep -m1 | awk '{print $2}')") },
+	{ 0,				XF86XK_MonBrightnessDown, spawn, SHCMD("sudo ybacklight -dec 5% && kill $(ps -ef | grep sleep -m1 | awk '{print $2}')") },
 };
 
 /* button definitions */
